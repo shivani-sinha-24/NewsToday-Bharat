@@ -18,12 +18,11 @@ const News = (props)=> {
     props.setProgress(10);
     // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${setPage}&pageSize=${props.pageSize}`;
   
-    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${setPage}&pageSize=${props.pageSize}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
     let parsedData = await data.json();
-    console.log(parsedData.articles)
     props.setProgress(50);
     setArticles(parsedData.articles);
     setTotalResults(parsedData.totalResults);
@@ -40,7 +39,7 @@ const News = (props)=> {
   const fetchMoreData = async() => {
     props.setProgress(10);
     // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}`;
     setPage(page+1);
     let data = await fetch(url);
     props.setProgress(30);
