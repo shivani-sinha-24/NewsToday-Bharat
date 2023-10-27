@@ -18,7 +18,7 @@ const News = (props)=> {
     props.setProgress(10);
     // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${setPage}&pageSize=${props.pageSize}`;
   
-    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=5&apikey=${props.apiKey}&page=${setPage}&pageSize=${props.pageSize}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${setPage}&pageSize=${props.pageSize}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -39,7 +39,7 @@ const News = (props)=> {
   const fetchMoreData = async() => {
     props.setProgress(10);
     // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=5&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
     setPage(page+1);
     let data = await fetch(url);
     props.setProgress(30);
@@ -75,6 +75,7 @@ const News = (props)=> {
           <div className="container">
           <div className="row">
               {articles?.map(element=>{
+                console.log(element)
               return <div className="col-md-4" key={element.url}>
               <NewsItem title={element.title?element.title:""} description={element.description?(element.description.length>200?element.description.slice(0,200)+".....":element.description):"" } imageUrl={element.image} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
               </div>

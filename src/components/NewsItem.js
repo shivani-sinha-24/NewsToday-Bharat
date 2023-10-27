@@ -13,7 +13,8 @@ const NewsItem = props => {
           <div className="card-body">
             <h5 className="card-title"><b>{title}</b></h5>
             <p className="card-text">{description}</p>
-            <p className="card-text"><small className=" author-date"><b>By {!author?'Unknown':author} on {new Date(date).toGMTString()}</b></small></p>
+            {/* <p className="card-text"><small className=" author-date"><b>By {!author?'Unknown':author} on {new Date(date).toGMTString()}</b></small></p> */}
+            <p className="card-text"><small className=" author-date"><b>{new Date(date).toGMTString()}</b></small></p>
             <a href={newsUrl} target="_blank" className="btn btn-sm btn-danger">Read more</a>
           </div>
         </div>
